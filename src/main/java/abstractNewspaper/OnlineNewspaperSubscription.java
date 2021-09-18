@@ -5,7 +5,7 @@ public class OnlineNewspaperSubscription extends NewspaperSubscription {
     public void setSubscriberAddress(String subscriberAddress) {
         int check = 0;
         for (int i = 0; i < subscriberAddress.length(); i++) {
-            int ascii = (int) subscriberAddress.charAt(i);
+            int ascii = subscriberAddress.charAt(i);
             if ( ascii == 64 ) {
                 check = 1;
                 break;
