@@ -17,7 +17,7 @@ public class student {
             "WHERE studentID=?;";
     public static final String SHOWALL = "select * from students ;";
 
-    public static void add() throws SQLException {
+    public  void add() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(INSERT);
         Scanner input = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class student {
 
     }
 
-    public static void delete() throws SQLException {
+    public  void delete() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(DELETE);
         Scanner input = new Scanner(System.in);
@@ -45,7 +45,7 @@ public class student {
         con.close();
     }
 
-    public static void modify() throws SQLException {
+    public  void modify() throws SQLException {
 
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(MODIFY);
@@ -63,7 +63,7 @@ public class student {
         con.close();
     }
 
-    public static void showAll() throws SQLException {
+    public  void showAll() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(SHOWALL);
         ResultSet resultSet = statement.executeQuery(SHOWALL);
@@ -79,13 +79,7 @@ public class student {
     }
 
 
-    public static void main(String[] args) throws SQLException {
-        add();
-//        delete();
-//        modify();
-        showAll();
 
-    }
 }
 
 
