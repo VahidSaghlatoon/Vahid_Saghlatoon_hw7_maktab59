@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class student {
+public class Student {
 
     public static final String INSERT = "INSERT INTO students (firstName, lastName, teacherID)\n" +
             "VALUES(?, ?, ?);";

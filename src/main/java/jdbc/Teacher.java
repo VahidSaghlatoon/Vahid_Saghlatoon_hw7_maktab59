@@ -15,8 +15,32 @@ public class Teacher {
             "SET firstName=?, lastName=?, studentID=?\n" +
             "WHERE teacherID=?;";
     public static final String SHOWALL = "select * from teachers ;";
+    public static final String TEACHER_STUDENTS = "SELECT t.teacherID , s.studentID ,s.firstName ,s.lastName FROM students s \n" +
+            " JOIN teachers t \n" +
+            " ON s.teacherID = t.teacherID \n" +
+            " WHERE t.teacherID = ? ;";
 
-    public  void add() throws SQLException {
+    public void showTeacherStudents() throws SQLException {
+
+        Connection con = DbConfig.dbConnection();
+        PreparedStatement statement = con.prepareStatement(TEACHER_STUDENTS);
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter teacher id : ");
+        statement.setInt(1, input.nextInt());
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            System.out.println(resultSet.getInt("teacherID") + " " +
+                    resultSet.getInt("studentID") + " " +
+                    resultSet.getString("firstname") + " " +
+                    resultSet.getString("lastName"));
+        }
+
+        statement.execute();
+        statement.close();
+        con.close();
+    }
+
+    public void add() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(INSERT);
         Scanner input = new Scanner(System.in);
@@ -33,7 +57,7 @@ public class Teacher {
 
     }
 
-    public  void delete() throws SQLException {
+    public void delete() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(DELETE);
         Scanner input = new Scanner(System.in);
@@ -44,7 +68,7 @@ public class Teacher {
         con.close();
     }
 
-    public  void modify() throws SQLException {
+    public void modify() throws SQLException {
 
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(MODIFY);
@@ -62,7 +86,7 @@ public class Teacher {
         con.close();
     }
 
-    public  void showAll() throws SQLException {
+    public void showAll() throws SQLException {
         Connection con = DbConfig.dbConnection();
         PreparedStatement statement = con.prepareStatement(SHOWALL);
         ResultSet resultSet = statement.executeQuery(SHOWALL);
