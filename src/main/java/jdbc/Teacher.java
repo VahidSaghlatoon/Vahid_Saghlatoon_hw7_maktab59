@@ -15,10 +15,8 @@ public class Teacher {
             "SET firstName=?, lastName=?, studentID=?\n" +
             "WHERE teacherID=?;";
     public static final String SHOWALL = "select * from teachers ;";
-    public static final String TEACHER_STUDENTS = "SELECT t.teacherID , s.studentID ,s.firstName ,s.lastName FROM students s \n" +
-            " JOIN teachers t \n" +
-            " ON s.teacherID = t.teacherID \n" +
-            " WHERE t.teacherID = ? ;";
+    public static final String TEACHER_STUDENTS = "SELECT s.teacherID , s.studentID ,s.firstName ,s.lastName FROM students s \n" +
+            " WHERE s.teacherID = ? ;";
 
     public void showTeacherStudents() throws SQLException {
 

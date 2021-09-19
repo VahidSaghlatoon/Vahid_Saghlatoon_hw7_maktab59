@@ -7,6 +7,7 @@ public class Runner {
     public static void main(String[] args) throws SQLException {
         Teacher teacher = new Teacher();
         teacher.showTeacherStudents();
+
 //        teacher.add();
 //        teacher.delete();
 //        teacher.modify();
